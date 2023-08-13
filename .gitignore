@@ -1,6 +1,5 @@
 /target
 /dist
 /node_modules
-/.vscode
 **/*.rs.bk
 pnpm-lock.yaml
