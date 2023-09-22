@@ -1,6 +1,7 @@
 mod app;
 
 use app::*;
+use leptos::logging::log;
 use leptos::*;
 
 pub fn main() {
@@ -9,7 +10,7 @@ pub fn main() {
 
     log!("csr mode - mounting to body");
 
-    mount_to_body(|cx| {
-        view! { cx, <App/> }
+    mount_to_body(|| {
+        view! { <App/> }
     });
 }

@@ -1,70 +1,38 @@
-# Leptos Starter Template
+# Leptos Tailwind Template
 
-This is a template demonstrating how to integrate [TailwindCSS](https://tailwindcss.com/) with the [Leptos](https://github.com/leptos-rs/leptos) web framework and the [trunk](https://github.com/thedodd/trunk) tool.
+You will need the nightly toolchain:
 
-Install Tailwind and build the CSS:
+```
+rustup toolchain install nightly
+```
 
-`Trunk.toml` is configured to build the CSS automatically.
+### Run the project
 
-Install trunk to client side render this bundle.
+1. Install trunk
 
-`cargo install trunk`
-Then the site can be served with `trunk serve --open`
+```
+cargo install trunk
+```
 
-The browser will automatically open [http://127.0.0.1:8080//](http://127.0.0.1:8080//)
+2. Install Tailwind
 
-You can begin editing your app at `src/app.rs`.
-
-## Installing Tailwind
-
-You can install Tailwind using `npm`:
-
-```bash
+```
 npm install -D tailwindcss
 ```
 
-If you'd rather not use `npm`, you can install the Tailwind binary [here](https://github.com/tailwindlabs/tailwindcss/releases).
+3. start tailwind watch and keep it running (scans your files for tailwind classes and puts them into output.css)
 
-## Setting up with VS Code and Additional Tools
-
-If you're using VS Code, add the following to your `settings.json`
-
-```json
-  "emmet.includeLanguages": {
-    "rust": "html",
-    "*.rs": "html"
-  },
-  "tailwindCSS.includeLanguages": {
-      "rust": "html",
-      "*.rs": "html"
-  },
-  "files.associations": {
-      "*.rs": "rust"
-  },
-  "editor.quickSuggestions": {
-    "other": "on",
-    "comments": "on",
-    "strings": true
-  },
-  "css.validate": false,
+```
+npx tailwindcss -i ./input.css -o ./style/output.css --watch
 ```
 
-Install [Tailwind CSS Intellisense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss).
+4. build leptos project in a second console
 
-Install [VS Browser](https://marketplace.visualstudio.com/items?itemName=Phu1237.vs-browser) extension (allows you to open a browser at the right window.
+```
+trunk serve --open
+```
 
-Allow vscode Ports forward: 3000, 3001.
+This should open http://127.0.0.1:8080/ in your browser.
+If a process is already running on the port you can kill it with `npx kill-port 8080`
 
-## Notes about Tooling
-
-By default, `cargo-leptos` uses `nightly` Rust, `cargo-generate`, and `sass`. If you run into any trouble, you may need to install one or more of these tools.
-
-1. `rustup toolchain install nightly --allow-downgrade` - make sure you have Rust nightly
-2. `rustup default nightly` - setup nightly as default, or you can use rust-toolchain file later on
-3. `rustup target add wasm32-unknown-unknown` - add the ability to compile Rust to WebAssembly
-4. `cargo install cargo-generate` - install `cargo-generate` binary (should be installed automatically in future)
-5. `npm install -g sass` - install `dart-sass` (should be optional in future
-
-## Attribution
-
-This is based on the original Tailwind example (../examples/tailwind)
+You should see a big orange button, that is changing to blue when you hover it. Otherwise something went wrong.
